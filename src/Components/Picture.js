@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styles from './Picture.module.css'
 import './PictureAnimations.css'
 
 function Picture (props) {
-  useEffect(() => console.log(props), [props])
+  console.log(props)
 
   return (
     <div role='button' tabIndex='0' onKeyDown={null} onClick={props.newLink} className={styles.Picture}>
@@ -13,13 +13,11 @@ function Picture (props) {
         timeout={500}
         classNames={`fade-out-to-${props.liked ? 'right' : 'left'}`}
         onExited={props.newLink}
-        unmountOnExit
       >
-        {/* <p>{props.link}</p> */}
-        <img style={{ border: '1px solid red', minWidth: '200px', minHeight: '200px' }} alt='' src={props.link}/>
+        <img alt='' src={props.link}/>
       </CSSTransition>
     </div>
   )
 }
 
-export default Picture
+export default React.memo(Picture)
