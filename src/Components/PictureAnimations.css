@@ -1,3 +1,5 @@
+/* Horizontal Sliding */
+
 .fade-out-to-right-enter,
 .fade-out-to-left-enter {
   opacity: 0;
@@ -26,4 +28,39 @@
 .fade-out-to-left-exit-active {
   opacity: 0;
   transition: opacity 500ms, transform 500ms;
+}
+
+/* Vertical Sliding */
+
+.fade-out-to-bottom-enter {
+  transform: translateY(-100%);
+}
+
+.fade-out-to-top-enter {
+  transform: translateY(100%);
+}
+
+.fade-out-to-bottom-enter-active,
+.fade-out-to-top-enter-active {
+  transform: translateY(0%);
+  transition: transform 250ms;
+}
+
+.fade-out-to-bottom-exit,
+.fade-out-to-top-exit {
+  opacity: 1;
+}
+
+.fade-out-to-bottom-exit-active {
+  transform: translateY(100%);
+}
+
+.fade-out-to-top-exit-active {
+  transform: translateY(-100%);
+}
+
+.fade-out-to-bottom-exit-active,
+.fade-out-to-top-exit-active {
+  opacity: 0;
+  transition: opacity 250ms, transform 250ms;
 }
