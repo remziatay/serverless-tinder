@@ -55,6 +55,10 @@ function App () {
     <div className="App">
       <Picture link={current[imageIndex]?.src || ''}
         newLink={newLink}
+        slidePrevious={previous}
+        slideNext={next}
+        like={like}
+        dislike={dislike}
         liked={liking.liked}
         disliked={liking.disliked}
         previous={sliding.previous}

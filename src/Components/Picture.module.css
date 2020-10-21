@@ -1,11 +1,7 @@
 .Picture {
-  width: 400px;
-  height: 400px;
+  width: 80vw;
+  height: 70vh;
   border: 1px solid navy;
   margin: 0 auto;
   overflow: hidden;
-}
-
-.Picture > img {
-  max-height: 100%;
 }

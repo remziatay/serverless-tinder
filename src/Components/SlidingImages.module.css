@@ -2,11 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px dotted red;
   width: 100%;
   height: 100%;
 }
 
 .Container > img {
   max-height: 100%;
+  max-width: 100%;
 }
