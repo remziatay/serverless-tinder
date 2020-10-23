@@ -32,12 +32,16 @@ function Picture (props) {
     lastTouch.current = null
 
     if (Math.abs(dx) > Math.abs(dy)) {
-      dx > 0 ? like() : dislike()
-    } else { dy < 0 ? slideNext() : slidePrevious() }
+      const slideLimit = window.innerWidth / 10
+      dx > slideLimit ? like() : dx < -slideLimit && dislike()
+    } else {
+      const slideLimit = window.innerHeight / 10
+      dy < -slideLimit ? slideNext() : dy > slideLimit && slidePrevious()
+    }
   }, [like, dislike, slideNext, slidePrevious])
 
   return (props.link &&
-    <div className={styles.Picture} onTouchStart={touchStart} onTouchEnd={touchEnd}>
+    <div className={styles.Picture} onTouchStart={touchStart} onTouchEnd={touchEnd} >
       <CSSTransition
         in={ !props.liked && !props.disliked }
         timeout={500}

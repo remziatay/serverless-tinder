@@ -6,7 +6,15 @@
   height: 100%;
 }
 
-.Container > img {
+img {
+  width: auto !important;
+  height: auto !important;
   max-height: 100%;
   max-width: 100%;
+}
+
+:global(.ant-image-placeholder) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

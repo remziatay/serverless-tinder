@@ -1,3 +1,4 @@
+import { Button, Card } from 'antd'
 import React, { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import Picture from './Components/Picture'
@@ -52,7 +53,7 @@ function App () {
   }, [current.length, sliding])
 
   return (
-    <div className="App">
+    <Card size="small" title="Small size card" style={{ width: 'max-content' }}>
       <Picture link={current[imageIndex]?.src || ''}
         newLink={newLink}
         slidePrevious={previous}
@@ -66,14 +67,14 @@ function App () {
         slide={slide}
       />
       <div style={{ textAlign: 'center', padding: '1em' }}>
-        <button onClick={dislike} style={{ width: '5em' }}>NO</button>
-        <button onClick={like} style={{ width: '5em' }}>YES</button>
+        <Button onClick={dislike} style={{ width: '5em' }}>NO</Button>
+        <Button onClick={like} style={{ width: '5em' }}>YES</Button>
       </div>
       <div style={{ textAlign: 'center', padding: '1em' }}>
-        <button onClick={previous} style={{ width: '8em' }}>PREVIOUS</button>
-        <button onClick={next} style={{ width: '8em' }}>NEXT</button>
+        <Button onClick={previous} style={{ width: '8em' }}>PREVIOUS</Button>
+        <Button onClick={next} style={{ width: '8em' }}>NEXT</Button>
       </div>
-    </div>
+    </Card>
   )
 }
 

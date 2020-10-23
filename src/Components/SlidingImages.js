@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styles from './SlidingImages.module.css'
 import './PictureAnimations.css'
+import { Image, Spin } from 'antd'
 
 function SlidingImages (props) {
   const [animation, setAnimation] = useState('')
@@ -18,9 +19,13 @@ function SlidingImages (props) {
       classNames={animation}
       onExited={props.slide}
     >
-      <div className={styles.Container}>
-        <img alt='' src={props.link}/>
-      </div>
+      <Image
+        alt=''
+        className={styles.Container}
+        src={props.link}
+        preview={false}
+        placeholder={<Spin tip='Loading...'/>}
+      />
     </CSSTransition>
   )
 }
