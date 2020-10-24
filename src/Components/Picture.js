@@ -1,8 +1,8 @@
+import { Image, Spin } from 'antd'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styles from './Picture.module.css'
 import './PictureAnimations.css'
-import SlidingImages from './SlidingImages'
 
 function Picture (props) {
   const [animation, setAnimation] = useState('')
@@ -25,7 +25,7 @@ function Picture (props) {
     lastTouch.current = { x: evt.changedTouches[0].clientX, y: evt.changedTouches[0].clientY }
   }, [])
 
-  const { like, dislike, slideNext, slidePrevious } = props
+  const { like, dislike } = props
   const touchEnd = useCallback(evt => {
     const dx = evt.changedTouches[0].clientX - lastTouch.current.x
     const dy = evt.changedTouches[0].clientY - lastTouch.current.y
@@ -35,10 +35,10 @@ function Picture (props) {
       const slideLimit = window.innerWidth / 10
       dx > slideLimit ? like() : dx < -slideLimit && dislike()
     } else {
-      const slideLimit = window.innerHeight / 10
-      dy < -slideLimit ? slideNext() : dy > slideLimit && slidePrevious()
+      /* const slideLimit = window.innerHeight / 10
+      dy < -slideLimit ? slideNext() : dy > slideLimit && slidePrevious() */
     }
-  }, [like, dislike, slideNext, slidePrevious])
+  }, [like, dislike])
 
   return (props.link &&
     <div className={styles.Picture} onTouchStart={touchStart} onTouchEnd={touchEnd} >
@@ -48,11 +48,14 @@ function Picture (props) {
         classNames={animation}
         onExited={newLink}
       >
-        {animating ? <p>LOADING</p> /* Dummy element */
-          : <SlidingImages link={props.link}
-            previous={props.previous}
-            next={props.next}
-            slide={props.slide}/>
+        {animating ? <p>☺</p> /* Dummy element */
+          : <Image
+            alt=''
+            className={styles.Container}
+            src={props.link}
+            preview={false}
+            placeholder={<Spin tip='Loading...'/>}
+          />
         }
       </CSSTransition>
     </div>

@@ -1,5 +1,9 @@
 @import "~antd/dist/antd.css";
 
 .dot button {
-  background: red !important;
+  background: var(--antd-wave-shadow-color) !important; /* #1890ff*/
+}
+
+.ant-carousel .slick-list .slick-slide.slick-active {
+  margin: 1px 0;
 }

@@ -1,5 +1,5 @@
 import { Card, Carousel } from 'antd'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import Picture from './Components/Picture'
 import { LikeTwoTone, DislikeTwoTone, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons'
@@ -14,14 +14,11 @@ const randomImage = () => {
 function App () {
   const [current, setCurrent] = useState([])
   const [liking, setLiking] = useState({ liked: false, disliked: false })
-  const [sliding, setSliding] = useState({ previous: false, next: false })
   const [imageCache, setImageCache] = useState([])
-  const [imageIndex, setImageIndex] = useState(NaN)
 
   useEffect(() => {
     setImageCache(() => [[randomImage(), randomImage(), randomImage()]])
     setCurrent([randomImage(), randomImage(), randomImage(), randomImage(), randomImage()])
-    setImageIndex(0)
   }, [])
 
   useEffect(() => {
@@ -32,26 +29,21 @@ function App () {
     })
   }, [imageCache])
 
+  const slider = useRef(null)
+
   const newLink = useCallback(() => {
     setImageCache(cache => {
       setCurrent(cache[0])
-      setImageIndex(0)
       return cache.slice(1)
     })
     setLiking({ liked: false, disliked: false })
+    slider.current.goTo(0, true)
   }, [])
 
   const like = useCallback(() => setLiking({ liked: true, disliked: false }), [])
   const dislike = useCallback(() => setLiking({ liked: false, disliked: true }), [])
-
-  const previous = useCallback(() => setSliding({ previous: true, next: false }), [])
-  const next = useCallback(() => setSliding({ previous: false, next: true }), [])
-
-  const slide = useCallback(() => {
-    if (sliding.previous) setImageIndex(index => (current.length + index - 1) % current.length)
-    else if (sliding.next) setImageIndex(index => (current.length + index + 1) % current.length)
-    setSliding({ previous: false, next: false })
-  }, [current.length, sliding])
+  const previous = useCallback(() => slider.current.prev(), [])
+  const next = useCallback(() => slider.current.next(), [])
 
   return (
     <>
@@ -60,25 +52,20 @@ function App () {
         actions={[
           <LikeTwoTone onClick={like} key='like'/>,
           <DislikeTwoTone onClick={dislike} key='dislike'/>,
-          <ArrowUpOutlined onClick={next} key='next'/>,
-          <ArrowDownOutlined onClick={previous} key='previous'/>
+          <ArrowDownOutlined onClick={next} key='next'/>,
+          <ArrowUpOutlined onClick={previous} key='previous'/>
         ]}
-        cover={<Carousel vertical
+        cover={<Carousel ref={slider} draggable verticalSwiping vertical
           dots={{ className: 'dot' }} dotPosition={'right'}>
           {
             current.map(img =>
               <Picture link={img.src || ''}
                 key={img.src}
                 newLink={newLink}
-                slidePrevious={previous}
-                slideNext={next}
                 like={like}
                 dislike={dislike}
                 liked={liking.liked}
                 disliked={liking.disliked}
-                previous={sliding.previous}
-                next={sliding.next}
-                slide={slide}
               />
             )
           }
