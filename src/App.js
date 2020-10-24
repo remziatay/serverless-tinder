@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import Picture from './Components/Picture'
 import { LikeTwoTone, DislikeTwoTone, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons'
+import { useKeyPress } from 'ahooks'
 
 const randomImage = () => {
   const link = `https://via.placeholder.com/${300 + Math.round(Math.random() * 1000)}x${300 + Math.round(Math.random() * 1000)}.png`
@@ -44,6 +45,11 @@ function App () {
   const dislike = useCallback(() => setLiking({ liked: false, disliked: true }), [])
   const previous = useCallback(() => slider.current.prev(), [])
   const next = useCallback(() => slider.current.next(), [])
+
+  useKeyPress('ArrowUp', previous)
+  useKeyPress('ArrowDown', next)
+  useKeyPress('ArrowLeft', dislike)
+  useKeyPress('ArrowRight', like)
 
   return (
     <>

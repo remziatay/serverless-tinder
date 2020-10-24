@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
+    "ahooks": "^2.7.1",
     "antd": "^4.7.2",
     "axios": "^0.20.0",
     "react": "^16.14.0",
