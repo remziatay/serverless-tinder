@@ -1,7 +1,8 @@
-import { Button, Card } from 'antd'
+import { Card, Carousel } from 'antd'
 import React, { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import Picture from './Components/Picture'
+import { LikeTwoTone, DislikeTwoTone, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons'
 
 const randomImage = () => {
   const link = `https://via.placeholder.com/${300 + Math.round(Math.random() * 1000)}x${300 + Math.round(Math.random() * 1000)}.png`
@@ -53,28 +54,37 @@ function App () {
   }, [current.length, sliding])
 
   return (
-    <Card size="small" title="Small size card" style={{ width: 'max-content' }}>
-      <Picture link={current[imageIndex]?.src || ''}
-        newLink={newLink}
-        slidePrevious={previous}
-        slideNext={next}
-        like={like}
-        dislike={dislike}
-        liked={liking.liked}
-        disliked={liking.disliked}
-        previous={sliding.previous}
-        next={sliding.next}
-        slide={slide}
+    <>
+      <Card hoverable style={{ width: '80vw', userSelect: 'none', margin: '0 auto' }}
+        bodyStyle={{ display: 'none' }}
+        actions={[
+          <LikeTwoTone onClick={like} key='like'/>,
+          <DislikeTwoTone onClick={dislike} key='dislike'/>,
+          <ArrowUpOutlined onClick={next} key='next'/>,
+          <ArrowDownOutlined onClick={previous} key='previous'/>
+        ]}
+        cover={<Carousel vertical
+          dots={{ className: 'dot' }} dotPosition={'right'}>
+          {
+            current.map(img =>
+              <Picture link={img.src || ''}
+                key={img.src}
+                newLink={newLink}
+                slidePrevious={previous}
+                slideNext={next}
+                like={like}
+                dislike={dislike}
+                liked={liking.liked}
+                disliked={liking.disliked}
+                previous={sliding.previous}
+                next={sliding.next}
+                slide={slide}
+              />
+            )
+          }
+        </Carousel>}
       />
-      <div style={{ textAlign: 'center', padding: '1em' }}>
-        <Button onClick={dislike} style={{ width: '5em' }}>NO</Button>
-        <Button onClick={like} style={{ width: '5em' }}>YES</Button>
-      </div>
-      <div style={{ textAlign: 'center', padding: '1em' }}>
-        <Button onClick={previous} style={{ width: '8em' }}>PREVIOUS</Button>
-        <Button onClick={next} style={{ width: '8em' }}>NEXT</Button>
-      </div>
-    </Card>
+    </>
   )
 }
 

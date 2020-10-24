@@ -1,1 +1,5 @@
 @import "~antd/dist/antd.css";
+
+.dot button {
+  background: red !important;
+}

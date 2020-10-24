@@ -1,7 +1,14 @@
 .Picture {
   width: 80vw;
-  height: 70vh;
-  border: 1px solid navy;
+  height: min(calc(9 / 16 * 80vw), 80vh);
+  /* border: 1px solid navy; */
   margin: 0 auto;
   overflow: hidden;
+}
+
+@media (orientation: portrait) {
+  .Picture {
+    height: 80vh;
+    width: min(calc(9 / 16 * 80vh), 90vw);
+  }
 }
