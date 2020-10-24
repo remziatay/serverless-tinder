@@ -1,9 +1,33 @@
 @import "~antd/dist/antd.css";
 
+.dot {
+  width: 9px !important;
+}
+
 .dot button {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
   background: var(--antd-wave-shadow-color) !important; /* #1890ff*/
+}
+
+.dot li {
+  width: 9px !important;
+  height: 9px !important;
 }
 
 .ant-carousel .slick-list .slick-slide.slick-active {
   margin: 1px 0;
+}
+
+.Card {
+  width: 80vw;
+  user-select: none;
+  margin: 0 auto;
+}
+
+@media (orientation: portrait) {
+  .Card {
+    width: 90vw;
+  }
 }

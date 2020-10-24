@@ -16,6 +16,7 @@ function App () {
   const [current, setCurrent] = useState([])
   const [liking, setLiking] = useState({ liked: false, disliked: false })
   const [imageCache, setImageCache] = useState([])
+  const [imgIndex, setImgIndex] = useState(0)
 
   useEffect(() => {
     setImageCache(() => [[randomImage(), randomImage(), randomImage()]])
@@ -33,18 +34,20 @@ function App () {
   const slider = useRef(null)
 
   const newLink = useCallback(() => {
+    slider.current.innerSlider.slideHandler(0, true)
     setImageCache(cache => {
       setCurrent(cache[0])
+      slider.current.goTo(0, true)
       return cache.slice(1)
     })
     setLiking({ liked: false, disliked: false })
-    slider.current.goTo(0, true)
+    setImgIndex(0)
   }, [])
 
   const like = useCallback(() => setLiking({ liked: true, disliked: false }), [])
   const dislike = useCallback(() => setLiking({ liked: false, disliked: true }), [])
-  const previous = useCallback(() => slider.current.prev(), [])
-  const next = useCallback(() => slider.current.next(), [])
+  const previous = useCallback(() => slider.current.prev(true), [])
+  const next = useCallback(() => slider.current.next(true), [])
 
   useKeyPress('ArrowUp', previous)
   useKeyPress('ArrowDown', next)
@@ -53,26 +56,31 @@ function App () {
 
   return (
     <>
-      <Card hoverable style={{ width: '80vw', userSelect: 'none', margin: '0 auto' }}
+      <Card hoverable className='Card'
         bodyStyle={{ display: 'none' }}
         actions={[
-          <LikeTwoTone onClick={like} key='like'/>,
-          <DislikeTwoTone onClick={dislike} key='dislike'/>,
+          <ArrowUpOutlined onClick={previous} key='previous'/>,
           <ArrowDownOutlined onClick={next} key='next'/>,
-          <ArrowUpOutlined onClick={previous} key='previous'/>
+          <DislikeTwoTone twoToneColor={'red'} onClick={dislike} key='dislike'/>,
+          <LikeTwoTone onClick={like} key='like'/>
         ]}
-        cover={<Carousel ref={slider} draggable verticalSwiping vertical
-          dots={{ className: 'dot' }} dotPosition={'right'}>
+        cover={<Carousel touchThreshold={12} ref={slider} draggable verticalSwiping vertical
+          dots={{ className: 'dot' }} dotPosition={'right'} afterChange={useCallback(c => setImgIndex(c), [])}>
           {
-            current.map(img =>
-              <Picture link={img.src || ''}
-                key={img.src}
-                newLink={newLink}
-                like={like}
-                dislike={dislike}
-                liked={liking.liked}
-                disliked={liking.disliked}
-              />
+            current.map((img, i) =>
+              i === imgIndex
+                ? <Picture link={img.src || ''}
+                  key={img.src}
+                  newLink={newLink}
+                  like={like}
+                  dislike={dislike}
+                  liked={liking.liked}
+                  disliked={liking.disliked}
+                /> : <Picture link={img.src || ''}
+                  key={img.src}
+                  like={like}
+                  dislike={dislike}
+                />
             )
           }
         </Carousel>}

@@ -31,7 +31,7 @@ function Picture (props) {
     const dy = evt.changedTouches[0].clientY - lastTouch.current.y
     lastTouch.current = null
 
-    if (Math.abs(dx) > Math.abs(dy)) {
+    if (Math.abs(dy) < window.innerHeight / 30) {
       const slideLimit = window.innerWidth / 10
       dx > slideLimit ? like() : dx < -slideLimit && dislike()
     } else {
