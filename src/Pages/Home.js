@@ -1,8 +1,7 @@
 import { ArrowDownOutlined, ArrowUpOutlined, DislikeTwoTone, LikeTwoTone } from '@ant-design/icons'
 import { useKeyPress } from 'ahooks'
-import { Button, Card, Carousel } from 'antd'
+import { Card, Carousel } from 'antd'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import Picture from '../Components/Picture'
 
 const randomImage = () => {
@@ -56,7 +55,6 @@ const Home = (props) => {
 
   return (
     <>
-      <Button><Link to="/profile">Profile</Link></Button>
       <Card hoverable className='Card'
         bodyStyle={{ display: 'none' }}
         actions={[

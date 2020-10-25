@@ -1,0 +1,35 @@
+.Menu {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background: #076bc9;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.75);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.MenuItem {
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(173, 173, 173);
+  font-size: 1.5em;
+  border-right: 1px solid black;
+}
+
+.MenuItem:last-child {
+  border: none;
+}
+
+.MenuItem.Active,
+.MenuItem:hover,
+.MenuItem:focus {
+  color: white;
+}
+
+.MenuItem p {
+  font-size: 0.5em;
+  margin: 0;
+}

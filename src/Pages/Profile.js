@@ -1,10 +1,14 @@
+import { Button } from 'antd'
 import React, { useContext } from 'react'
-import { UserContext } from '../firebase'
+import { auth, UserContext } from '../firebase'
 
 const Profile = (props) => {
   const user = useContext(UserContext)
   return (
-    <p>{`Signed in as ${user.displayName || user.email || user.phoneNumber || user.uid}`}</p>
+    <>
+      <p>{`Signed in as ${user.displayName || user.email || user.phoneNumber || user.uid}`}</p>
+      <Button danger type="primary" size="large" shape="round" onClick={() => auth.signOut()}>Signout</Button>
+    </>
   )
 }
 
