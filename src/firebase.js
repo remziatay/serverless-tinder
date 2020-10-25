@@ -20,8 +20,8 @@ export const uiConfig = {
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.EmailAuthProvider.PROVIDER_ID
-    // 'anonymous'
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    'anonymous'
   ],
   tosUrl: '',
   privacyPolicyUrl: () => { window.location.assign('') },
@@ -37,7 +37,7 @@ export const UserProvider = props => {
   const [user, setUser] = useState(null)
 
   useEffect(() => auth.onAuthStateChanged(async user => {
-    if (!user) return
+    if (!user) return setUser(null)
     setUser(user)
     if (user.isAnonymous) return
     const userRef = firestore.doc(`users/${user.uid}`)
