@@ -7,8 +7,10 @@
     "ahooks": "^2.7.1",
     "antd": "^4.7.2",
     "axios": "^0.20.0",
+    "firebase": "^7.24.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-firebaseui": "^4.1.0",
     "react-scripts": "3.4.3",
     "react-transition-group": "^4.4.1"
   },

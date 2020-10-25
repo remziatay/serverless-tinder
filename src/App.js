@@ -1,9 +1,11 @@
 import { Card, Carousel } from 'antd'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import './App.css'
 import Picture from './Components/Picture'
 import { LikeTwoTone, DislikeTwoTone, ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons'
 import { useKeyPress } from 'ahooks'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'
+import { auth, uiConfig, UserContext } from './firebase'
 
 const randomImage = () => {
   const link = `https://via.placeholder.com/${300 + Math.round(Math.random() * 1000)}x${300 + Math.round(Math.random() * 1000)}.png`
@@ -17,6 +19,8 @@ function App () {
   const [liking, setLiking] = useState({ liked: false, disliked: false })
   const [imageCache, setImageCache] = useState([])
   const [imgIndex, setImgIndex] = useState(0)
+
+  const user = useContext(UserContext)
 
   useEffect(() => {
     setImageCache(() => [[randomImage(), randomImage(), randomImage()]])
@@ -46,8 +50,8 @@ function App () {
 
   const like = useCallback(() => setLiking({ liked: true, disliked: false }), [])
   const dislike = useCallback(() => setLiking({ liked: false, disliked: true }), [])
-  const previous = useCallback(() => slider.current.prev(true), [])
-  const next = useCallback(() => slider.current.next(true), [])
+  const previous = useCallback(() => slider.current.prev(), [])
+  const next = useCallback(() => slider.current.next(), [])
 
   useKeyPress('ArrowUp', previous)
   useKeyPress('ArrowDown', next)
@@ -56,6 +60,8 @@ function App () {
 
   return (
     <>
+      {!user ? <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}/>
+        : <code>{/* JSON.stringify(user.toJSON()) */}Signed In!</code> }
       <Card hoverable className='Card'
         bodyStyle={{ display: 'none' }}
         actions={[
