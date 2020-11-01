@@ -1,0 +1,30 @@
+self.__precacheManifest = (self.__precacheManifest || []).concat([
+  {
+    "revision": "7f486ce1ae891dd22251c88575c8ad9a",
+    "url": "/serverless-tinder/index.html"
+  },
+  {
+    "revision": "b3bf22ef7e86bc26b3c4",
+    "url": "/serverless-tinder/static/css/2.16359f18.chunk.css"
+  },
+  {
+    "revision": "a53cf732d3eaab98671b",
+    "url": "/serverless-tinder/static/css/main.b57c35b6.chunk.css"
+  },
+  {
+    "revision": "b3bf22ef7e86bc26b3c4",
+    "url": "/serverless-tinder/static/js/2.f1c92e1d.chunk.js"
+  },
+  {
+    "revision": "687334f7b20b12a09f385f41fc126ac9",
+    "url": "/serverless-tinder/static/js/2.f1c92e1d.chunk.js.LICENSE.txt"
+  },
+  {
+    "revision": "a53cf732d3eaab98671b",
+    "url": "/serverless-tinder/static/js/main.ad26e3ce.chunk.js"
+  },
+  {
+    "revision": "bd52275851d28bdd40ca",
+    "url": "/serverless-tinder/static/js/runtime-main.edef7556.js"
+  }
+]);

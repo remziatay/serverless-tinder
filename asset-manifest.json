@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/serverless-tinder/static/css/main.d0fc966a.chunk.css",
-    "main.js": "/serverless-tinder/static/js/main.f4c78bfe.chunk.js",
-    "main.js.map": "/serverless-tinder/static/js/main.f4c78bfe.chunk.js.map",
+    "main.css": "/serverless-tinder/static/css/main.b57c35b6.chunk.css",
+    "main.js": "/serverless-tinder/static/js/main.ad26e3ce.chunk.js",
+    "main.js.map": "/serverless-tinder/static/js/main.ad26e3ce.chunk.js.map",
     "runtime-main.js": "/serverless-tinder/static/js/runtime-main.edef7556.js",
     "runtime-main.js.map": "/serverless-tinder/static/js/runtime-main.edef7556.js.map",
     "static/css/2.16359f18.chunk.css": "/serverless-tinder/static/css/2.16359f18.chunk.css",
-    "static/js/2.3cf5bdca.chunk.js": "/serverless-tinder/static/js/2.3cf5bdca.chunk.js",
-    "static/js/2.3cf5bdca.chunk.js.map": "/serverless-tinder/static/js/2.3cf5bdca.chunk.js.map",
+    "static/js/2.f1c92e1d.chunk.js": "/serverless-tinder/static/js/2.f1c92e1d.chunk.js",
+    "static/js/2.f1c92e1d.chunk.js.map": "/serverless-tinder/static/js/2.f1c92e1d.chunk.js.map",
     "index.html": "/serverless-tinder/index.html",
-    "precache-manifest.5c904a51a965cf972e5e4d58cdb682bb.js": "/serverless-tinder/precache-manifest.5c904a51a965cf972e5e4d58cdb682bb.js",
+    "precache-manifest.781cc93e63050b907f53e6b1e45bcb9f.js": "/serverless-tinder/precache-manifest.781cc93e63050b907f53e6b1e45bcb9f.js",
     "service-worker.js": "/serverless-tinder/service-worker.js",
     "static/css/2.16359f18.chunk.css.map": "/serverless-tinder/static/css/2.16359f18.chunk.css.map",
-    "static/css/main.d0fc966a.chunk.css.map": "/serverless-tinder/static/css/main.d0fc966a.chunk.css.map",
-    "static/js/2.3cf5bdca.chunk.js.LICENSE.txt": "/serverless-tinder/static/js/2.3cf5bdca.chunk.js.LICENSE.txt"
+    "static/css/main.b57c35b6.chunk.css.map": "/serverless-tinder/static/css/main.b57c35b6.chunk.css.map",
+    "static/js/2.f1c92e1d.chunk.js.LICENSE.txt": "/serverless-tinder/static/js/2.f1c92e1d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.edef7556.js",
     "static/css/2.16359f18.chunk.css",
-    "static/js/2.3cf5bdca.chunk.js",
-    "static/css/main.d0fc966a.chunk.css",
-    "static/js/main.f4c78bfe.chunk.js"
+    "static/js/2.f1c92e1d.chunk.js",
+    "static/css/main.b57c35b6.chunk.css",
+    "static/js/main.ad26e3ce.chunk.js"
   ]
 }
