@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e353fa4dabb84b20515b0cc97a378c7a",
+    "revision": "85f57b005946b72029788117762830f9",
     "url": "/serverless-tinder/index.html"
   },
   {
