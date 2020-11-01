@@ -1,26 +1,13 @@
 .Menu {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  background: #076bc9;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.75);
-  display: grid;
+  @apply fixed grid bottom-0 w-screen bg-blue-700;
+
+  box-shadow: 0 -10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 -4px 6px -2px rgba(0, 0, 0, 0.05);
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
 }
 
 .MenuItem {
-  padding: 4px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: rgb(173, 173, 173);
-  font-size: 1.5em;
-  border-right: 1px solid black;
-}
-
-.MenuItem:last-child {
-  border: none;
+  @apply flex p-1 flex-col content-center items-center text-gray-500 text-2xl outline-none;
 }
 
 .MenuItem.Active,
@@ -29,7 +16,42 @@
   color: white;
 }
 
+.Collapse {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .Menu {
+    @apply flex flex-col right-0 w-auto h-screen;
+
+    box-shadow: -10px 0 15px -3px rgba(0, 0, 0, 0.1),
+      -4px 0 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .MenuItem {
+    @apply flex-row flex-no-wrap gap-1 px-6 py-3 my-1;
+  }
+
+  .MenuItem:hover {
+    @apply bg-blue-500;
+  }
+
+  .Collapse {
+    @apply flex mt-auto py-10;
+  }
+
+  .Collapsed .MenuItem p {
+    display: none;
+  }
+}
+
 .MenuItem p {
   font-size: 0.5em;
   margin: 0;
+}
+
+@media (min-width: 768px) {
+  .MenuItem p {
+    @apply text-lg;
+  }
 }

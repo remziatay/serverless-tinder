@@ -22,6 +22,7 @@ module.exports = {
     'rule-empty-line-before': null,
     'number-leading-zero': null,
     'block-opening-brace-space-before': null,
-    'no-empty-source': null
+    'no-empty-source': null,
+    'declaration-colon-space-after': null
   }
 }

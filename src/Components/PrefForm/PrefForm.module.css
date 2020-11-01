@@ -1,0 +1,19 @@
+input {
+  @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
+}
+
+input:focus {
+  @apply outline-none bg-white border-gray-500;
+}
+
+label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+select {
+  @apply block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight;
+}
+
+select:focus {
+  @apply outline-none bg-white border-gray-500;
+}

@@ -1,13 +1,13 @@
-import { Button } from 'antd'
 import React, { useContext } from 'react'
-import { auth, UserContext } from '../firebase'
+import PrefForm from '../Components/PrefForm/PrefForm'
+import { UserContext } from '../firebase'
 
 const Profile = (props) => {
   const user = useContext(UserContext)
+  const name = user.displayName || user.email || user.phoneNumber || user.uid
   return (
     <>
-      <p>{`Signed in as ${user.displayName || user.email || user.phoneNumber || user.uid}`}</p>
-      <Button danger type="primary" size="large" shape="round" onClick={() => auth.signOut()}>Signout</Button>
+      <PrefForm user={user}/>
     </>
   )
 }

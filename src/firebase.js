@@ -43,15 +43,15 @@ export const UserProvider = props => {
     const userRef = firestore.doc(`users/${user.uid}`)
     const snapshot = await userRef.get()
     if (!snapshot.exists) {
-      const { uid, email, displayName, photoURL, emailVerified, phoneNumber } = user
+      const { email, displayName, photoURL, emailVerified, phoneNumber } = user
       try {
         await userRef.set({
-          uid,
           displayName,
           email,
           photoURL,
           emailVerified,
-          phoneNumber
+          phoneNumber,
+          photos: []
         })
       } catch (error) {
         console.error('Error creating user document', error)

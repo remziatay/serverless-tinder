@@ -10,13 +10,13 @@ const MenuItem = (props) => {
     exact: true
   })
 
-  const go = useCallback(() => match || history.push(props.to), [history, match, props.to])
+  const go = useCallback(() => props.onClick?.() || match || history.push(props.to), [history, match, props])
 
   return (
     <div role='button' tabIndex={0} onKeyPress={go} onClick={go}
-      className={clsx(styles.MenuItem, match && styles.Active)}>
+      className={clsx(styles.MenuItem, match && styles.Active, props.className)}>
       {props.icon}
-      <p>{props.text}</p>
+      {props.text && <p>{props.text}</p>}
     </div>
   )
 }

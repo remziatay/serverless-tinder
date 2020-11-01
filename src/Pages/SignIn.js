@@ -10,8 +10,8 @@ const SignIn = () => {
   const location = useLocation()
 
   useEffect(() => {
-    if (!user || !location?.state) return
-    const { from } = location.state
+    if (!user) return
+    const from = location?.state?.from || '/'
     if (from) history.replace(from)
   }, [history, location.state, user])
 
