@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7f486ce1ae891dd22251c88575c8ad9a",
+    "revision": "3584a593174cc0648e4d32d6a0ee94d5",
     "url": "/serverless-tinder/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/serverless-tinder/static/css/2.16359f18.chunk.css"
   },
   {
-    "revision": "a53cf732d3eaab98671b",
-    "url": "/serverless-tinder/static/css/main.b57c35b6.chunk.css"
+    "revision": "30ebe5abbde67386c845",
+    "url": "/serverless-tinder/static/css/main.df52869c.chunk.css"
   },
   {
     "revision": "b3bf22ef7e86bc26b3c4",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/serverless-tinder/static/js/2.f1c92e1d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a53cf732d3eaab98671b",
-    "url": "/serverless-tinder/static/js/main.ad26e3ce.chunk.js"
+    "revision": "30ebe5abbde67386c845",
+    "url": "/serverless-tinder/static/js/main.a1e6237a.chunk.js"
   },
   {
     "revision": "bd52275851d28bdd40ca",
