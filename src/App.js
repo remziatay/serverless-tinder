@@ -16,34 +16,32 @@ function App () {
 
   return (
     <Router basename="serverless-tinder">
-      <Switch>
-
-        <Route path="/signin">
-          <SignIn/>
-        </Route>
-
-        <PrivateRoute path="/profile">
-          <Profile/>
-        </PrivateRoute>
-
-        <PrivateRoute path="/matches">
-          <Matches/>
-        </PrivateRoute>
-
-        <Route path="/">
-          <Home/>
-        </Route>
-
-      </Switch>
-
-      <BottomMenu>
-        { user
-          ? <MenuItem to={'/profile'} icon={<SmileFilled/>} text='Profile'/>
-          : <MenuItem to={'/signin'} icon={<LoginOutlined/>} text='Login'/>
-        }
-        <MenuItem to='/' active icon={<HomeFilled/>} text='Home'/>
-        <MenuItem to='/matches' icon={<HeartFilled/>} text='Matches'/>
-      </BottomMenu>
+      <div className='flex flex-col max-h-screen h-screen md:flex-row'>
+        <div className='flex-auto overflow-y-auto py-2 px-1'>
+          <Switch>
+            <Route path="/signin">
+              <SignIn/>
+            </Route>
+            <PrivateRoute path="/profile">
+              <Profile/>
+            </PrivateRoute>
+            <PrivateRoute path="/matches">
+              <Matches/>
+            </PrivateRoute>
+            <Route path="/">
+              <Home/>
+            </Route>
+          </Switch>
+        </div>
+        <BottomMenu>
+          { user
+            ? <MenuItem to={'/profile'} icon={<SmileFilled/>} text='Profile'/>
+            : <MenuItem to={'/signin'} icon={<LoginOutlined/>} text='Login'/>
+          }
+          <MenuItem to='/' active icon={<HomeFilled/>} text='Home'/>
+          <MenuItem to='/matches' icon={<HeartFilled/>} text='Matches'/>
+        </BottomMenu>
+      </div>
 
     </Router>
   )

@@ -40,7 +40,7 @@ const PrefForm = ({ user }) => {
           <ErrorMessage name="displayCountry" component={ErrorDiv}/>
         </div>
 
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 ml-auto rounded focus:outline-none focus:shadow-outline' type="submit">Done</button>
+        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 block ml-auto rounded focus:outline-none focus:shadow-outline' type="submit">Done</button>
       </Form>
     </Formik>
   )

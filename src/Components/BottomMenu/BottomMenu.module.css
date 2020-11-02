@@ -1,5 +1,5 @@
 .Menu {
-  @apply fixed grid bottom-0 w-screen bg-blue-700;
+  @apply grid bottom-0 w-screen bg-blue-700;
 
   box-shadow: 0 -10px 15px -3px rgba(0, 0, 0, 0.1),
     0 -4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -22,7 +22,7 @@
 
 @media (min-width: 768px) {
   .Menu {
-    @apply flex flex-col right-0 w-auto h-screen;
+    @apply flex flex-col right-0 w-auto h-screen overflow-auto;
 
     box-shadow: -10px 0 15px -3px rgba(0, 0, 0, 0.1),
       -4px 0 6px -2px rgba(0, 0, 0, 0.05);
@@ -30,6 +30,10 @@
 
   .MenuItem {
     @apply flex-row flex-no-wrap gap-1 px-6 py-3 my-1;
+  }
+
+  .Menu:not(.Collapsed) .MenuItem {
+    @apply px-10;
   }
 
   .MenuItem:hover {
