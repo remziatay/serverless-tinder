@@ -5,7 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { auth, uiConfig, UserContext } from '../firebase'
 
 const SignIn = () => {
-  const user = useContext(UserContext)
+  const { user } = useContext(UserContext)
   const history = useHistory()
   const location = useLocation()
 

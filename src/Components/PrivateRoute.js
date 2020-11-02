@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom'
 import { UserContext } from '../firebase'
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const user = useContext(UserContext)
+  const { user } = useContext(UserContext)
   return (
     <Route
       {...rest}

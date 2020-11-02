@@ -30,37 +30,30 @@ export const uiConfig = {
   }
 }
 
-export const UserContext = createContext({ user: null })
+export const UserContext = createContext({ user: null, userInfo: null })
 UserContext.displayName = 'UserContext'
 
 export const UserProvider = props => {
   const [user, setUser] = useState(null)
+  const [userInfo, setUserInfo] = useState(null)
 
-  useEffect(() => auth.onAuthStateChanged(async user => {
-    if (!user) return setUser(null)
+  useEffect(() => auth.onAuthStateChanged(user => {
+    if (!user) {
+      setUser(null)
+      setUserInfo(null)
+      return
+    }
     setUser(user)
     if (user.isAnonymous) return
     const userRef = firestore.doc(`users/${user.uid}`)
-    const snapshot = await userRef.get()
-    if (!snapshot.exists) {
-      const { email, displayName, photoURL, emailVerified, phoneNumber } = user
-      try {
-        await userRef.set({
-          displayName,
-          email,
-          photoURL,
-          emailVerified,
-          phoneNumber,
-          photos: []
-        })
-      } catch (error) {
-        console.error('Error creating user document', error)
-      }
-    }
+    userRef.onSnapshot(snapshot => {
+      if (!snapshot.exists) setUserInfo(null)
+      else setUserInfo(snapshot.data())
+    })
   }), [])
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={{ user, userInfo }}>
       {props.children}
     </UserContext.Provider>
   )

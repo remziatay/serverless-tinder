@@ -12,7 +12,7 @@ import { UserContext } from './firebase'
 import Matches from './Pages/Matches'
 
 function App () {
-  const user = useContext(UserContext)
+  const { user } = useContext(UserContext)
 
   return (
     <Router basename="serverless-tinder">

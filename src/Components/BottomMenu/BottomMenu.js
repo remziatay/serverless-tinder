@@ -8,7 +8,7 @@ import MenuItem from './MenuItem'
 
 const BottomMenu = (props) => {
   const [collapsed, { toggle: toggleCollapse }] = useToggle(true)
-  const user = useContext(UserContext)
+  const { user } = useContext(UserContext)
   return (
     <div className={clsx(styles.Menu, collapsed && styles.Collapsed)}>
       {props.children}
