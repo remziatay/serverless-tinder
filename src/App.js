@@ -9,6 +9,7 @@ import BottomMenu from './Components/BottomMenu/BottomMenu'
 import MenuItem from './Components/BottomMenu/MenuItem'
 import { HeartFilled, HomeFilled, LoginOutlined, SmileFilled } from '@ant-design/icons'
 import { UserContext } from './firebase'
+import Matches from './Pages/Matches'
 
 function App () {
   const user = useContext(UserContext)
@@ -23,6 +24,10 @@ function App () {
 
         <PrivateRoute path="/profile">
           <Profile/>
+        </PrivateRoute>
+
+        <PrivateRoute path="/matches">
+          <Matches/>
         </PrivateRoute>
 
         <Route path="/">
