@@ -46,7 +46,7 @@ const PrefForm = ({ user, userInfo }) => {
       }}
     >
       {formik =>
-        <Form className='flex-1 space-y-3'>
+        <Form className='space-y-3'>
           <div>
             <label htmlFor="name">Name: </label>
             <Field id="name" name="name" />

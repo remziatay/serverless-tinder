@@ -1,0 +1,10 @@
+/* background: `url(${randomImage()}) no-repeat center center fixed`, backgroundSize: 'cover' */
+
+.Image {
+  @apply border border-indigo-400 rounded;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding-bottom: 100%;
+}
