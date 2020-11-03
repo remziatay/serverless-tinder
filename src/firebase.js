@@ -30,24 +30,24 @@ export const uiConfig = {
   }
 }
 
-export const UserContext = createContext({ user: null, userInfo: null })
+export const UserContext = createContext({ user: null, userInfo: {} })
 UserContext.displayName = 'UserContext'
 
 export const UserProvider = props => {
   const [user, setUser] = useState(null)
-  const [userInfo, setUserInfo] = useState(null)
+  const [userInfo, setUserInfo] = useState({})
 
   useEffect(() => auth.onAuthStateChanged(user => {
     if (!user) {
       setUser(null)
-      setUserInfo(null)
+      setUserInfo({})
       return
     }
     setUser(user)
     if (user.isAnonymous) return
     const userRef = firestore.doc(`users/${user.uid}`)
     userRef.onSnapshot(snapshot => {
-      if (!snapshot.exists) setUserInfo(null)
+      if (!snapshot.exists) setUserInfo({})
       else setUserInfo(snapshot.data())
     })
   }), [])

@@ -16,8 +16,8 @@ function App () {
 
   return (
     <Router basename="serverless-tinder">
-      <div className='flex flex-col max-h-screen h-screen md:flex-row'>
-        <div className='flex-auto overflow-y-auto py-2 px-1'>
+      <div className='flex flex-col max-w-full max-h-screen h-screen md:flex-row'>
+        <div className='flex-1 overflow-y-auto px-3'>
           <Switch>
             <Route path="/signin">
               <SignIn/>
