@@ -1,10 +1,22 @@
-/* background: `url(${randomImage()}) no-repeat center center fixed`, backgroundSize: 'cover' */
+.Container {
+  @apply grid grid-cols-3 grid-rows-3 rounded-3xl overflow-hidden gap-px;
 
-.Image {
-  @apply border border-indigo-400 rounded;
+  .Image {
+    @apply relative bg-no-repeat bg-center bg-cover;
 
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  padding-bottom: 100%;
+    &:hover::after {
+      @apply absolute inset-0 flex justify-center items-center text-white text-xl;
+
+      background-color: rgba(0, 0, 0, 0.6);
+      content: "Upload Image";
+    }
+
+    &:first-child {
+      @apply col-span-2 row-span-2;
+    }
+
+    input[type="file"] {
+      @apply absolute inset-0 opacity-0 cursor-pointer z-10;
+    }
+  }
 }

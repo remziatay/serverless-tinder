@@ -23,6 +23,7 @@ module.exports = {
     'number-leading-zero': null,
     'block-opening-brace-space-before': null,
     'no-empty-source': null,
-    'declaration-colon-space-after': null
+    'declaration-colon-space-after': null,
+    'value-keyword-case': null
   }
 }
