@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/serverless-tinder/precache-manifest.bd7d33ba488973e47b1083123f3b4250.js"
+  "/serverless-tinder/precache-manifest.33f2627a0f7977251cd2d2c908602703.js"
 );
 
 self.addEventListener('message', (event) => {
