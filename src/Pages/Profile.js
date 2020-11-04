@@ -3,10 +3,9 @@ import ImagesInput from '../Components/ImagesInput/ImagesInput'
 import PrefForm from '../Components/PrefForm/PrefForm'
 import { UserContext } from '../firebase'
 
-const Profile = (props) => {
+const Profile = () => {
   const { user, userInfo } = useContext(UserContext)
 
-  // const name = userInfo.name || user.displayName || user.email || user.phoneNumber || user.uid
   return (
     <>
       {user.isAnonymous &&

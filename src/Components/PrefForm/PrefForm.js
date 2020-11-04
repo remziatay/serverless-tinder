@@ -11,11 +11,7 @@ import { LoadingOutlined } from '@ant-design/icons'
 async function setUserData (user, data) {
   if (user.isAnonymous) return
   const userRef = firestore.doc(`users/${user.uid}`)
-  try {
-    await userRef.set({ ...data })
-  } catch (error) {
-    throw Error(error)
-  }
+  return userRef.update({ ...data })
 }
 
 const PrefForm = ({ user, userInfo }) => {
