@@ -7,11 +7,12 @@ import ErrorDiv from './ErrorDiv'
 import './PrefForm.module.css'
 import Select from './Select'
 import { LoadingOutlined } from '@ant-design/icons'
+import TitleWithButton from '../TitleWithButton'
 
-async function setUserData (user, data) {
+async function setUserData (user, data, update = true) {
   if (user.isAnonymous) return
   const userRef = firestore.doc(`users/${user.uid}`)
-  return userRef.update({ ...data })
+  return update ? userRef.update({ ...data }) : userRef.set({ ...data })
 }
 
 const PrefForm = ({ user, userInfo }) => {
@@ -34,7 +35,7 @@ const PrefForm = ({ user, userInfo }) => {
       })}
       onSubmit={async (values) => {
         try {
-          await setUserData(user, values)
+          await setUserData(user, values, !!userInfo.name)
         } catch (error) {
           setError(error)
           setTimeout(() => setError(false), 2500)
@@ -43,6 +44,10 @@ const PrefForm = ({ user, userInfo }) => {
     >
       {formik =>
         <Form className='space-y-3'>
+          <TitleWithButton title='Your Info'
+            button={<button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 w-1/5 rounded focus:outline-none focus:shadow-outline' disabled={formik.isSubmitting} type="submit">{formik.isSubmitting ? <LoadingOutlined spin style={{ color: 'red' }}/> : 'Done'}</button>}
+          />
+          {error && <ErrorDiv>{error.message}</ErrorDiv>}
           <div>
             <label htmlFor="name">Name: </label>
             <Field id="name" name="name" />
@@ -66,8 +71,6 @@ const PrefForm = ({ user, userInfo }) => {
             <Field id="age" name="age" />
             <ErrorMessage name="age" component={ErrorDiv}/>
           </div>
-          {error && <ErrorDiv>{error.message}</ErrorDiv>}
-          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-1/5 block ml-auto rounded focus:outline-none focus:shadow-outline' disabled={formik.isSubmitting} type="submit">{formik.isSubmitting ? <LoadingOutlined spin style={{ color: 'red' }}/> : 'Done'}</button>
         </Form>
       }
     </Formik>

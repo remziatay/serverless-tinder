@@ -1,5 +1,5 @@
 .Container {
-  @apply grid grid-cols-3 grid-rows-3 rounded-3xl overflow-hidden gap-px;
+  @apply grid grid-cols-3 grid-rows-3 rounded-3xl border overflow-hidden gap-px;
 
   .Image {
     @apply relative bg-no-repeat bg-center bg-cover;
