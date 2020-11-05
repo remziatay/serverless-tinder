@@ -13,15 +13,16 @@ function storePictures (user, pictures) {
   return userRef.update({ pictures })
 }
 
-const ImagesInput = (props) => {
+const ImagesInput = () => {
   const { user, userInfo } = useContext(UserContext)
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
   const [pictures, setPictures] = useState(new Array(6).fill(''))
 
   useEffect(() => {
-    if (userInfo.pictures) setPictures(pictures => pictures.map((_, i) => userInfo.pictures[i]))
-  }, [userInfo.pictures])
+    if (userInfo.pictures) setPictures(new Array(6).fill('').map((_, i) => userInfo.pictures[i]))
+    else setPictures(new Array(6).fill(''))
+  }, [error, userInfo.pictures])
 
   const setPictureByIndex = (index) => (picture) => {
     setPictures(pictures => [...pictures.slice(0, index), picture, ...pictures.slice(index + 1)])
@@ -60,6 +61,7 @@ const ImagesInput = (props) => {
     <>
       <TitleWithButton title='Your Pictures' button={button}/>
       {error && <ErrorDiv>{error.message}</ErrorDiv>}
+      {!userInfo.name && <ErrorDiv>You must fill your information before uploading pictures!</ErrorDiv>}
       <div className={styles.Container}>
         {pictures.map((picture, i) => <ImageSlot key={picture || i} picture={picture} setPicture={setPictureByIndex(i)} />)}
       </div>
